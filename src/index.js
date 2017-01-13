@@ -1,7 +1,10 @@
 import querystring from 'querystring';
 import url from 'url';
 
-const parseHref = (href) => {
+export BrowserHistory from './browser';
+export HashHistory from './hash';
+
+export const parseHref = (href) => {
 	const parsed = url.parse(href);
 
 	const location = {
@@ -22,6 +25,3 @@ const parseHref = (href) => {
 	};
 };
 
-export BrowserHistory from './browser';
-export HashHistory from './hash';
-export default parseHref;
