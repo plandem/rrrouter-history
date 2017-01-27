@@ -3,6 +3,16 @@ function hashToHref (hash) {
 }
 
 class HashHistory {
+	constructor(initHref = true) {
+		if(initHref) {
+			if(typeof(initHref) !== 'string') {
+				initHref = hashToHref(window.location.hash);
+			}
+
+			this.update(initHref, false);
+		}
+	}
+
 	subscribe (popCallback) {
 		this.onPopCallback = popCallback;
 		window.addEventListener('hashchange', this.onChange, false);

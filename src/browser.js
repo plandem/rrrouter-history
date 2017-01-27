@@ -1,4 +1,14 @@
 class BrowserHistory {
+	constructor(initHref = true) {
+		if(initHref) {
+			if(typeof(initHref) !== 'string') {
+				initHref = window.location.pathname;
+			}
+
+			this.replaceHref(initHref);
+		}
+	}
+
 	subscribe (popCallback) {
 		this.onPopCallback = popCallback;
 		return window.addEventListener('popstate', this.onChange, false);
